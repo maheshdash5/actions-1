@@ -3,26 +3,33 @@ name: My first workflow
 on: push
 
 jobs:
-    first_job:
+    build_job:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Repo
               uses: actions/checkout@v4.2.2
 
-            - name: List & Read Files
-              run: |
-                echo "My first action"
-                ls -latr
-                cat README.md
-    second_job:
+            - name: Install Cowsay Program
+              run: sudo apt-get install cowsay -y
+
+            - name: Execute Cowsay CMD
+              run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+
+            - name: Sleep for 30 seconds
+              run: sleep 30
+               
+    test_job:
+        needs: build_job
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout Repo
-              uses: actions/checkout@v4.2.2
+            - name: Test if File Exists
+              run: grep -i "dragon" dragon.txt
 
+    deploy_job:
+        needs: test_job
+        runs-on: ubuntu-latest
+        steps:
             - name: Executing the script
-              run: |
-                 chmod +x ascii-script.sh
-                 ./ascii-script.sh
+              run: echo "Successfully Deployed"
 
            
