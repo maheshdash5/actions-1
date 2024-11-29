@@ -44,6 +44,6 @@ jobs:
               name: dragon-artifact
 
           - name: Executing the script
-            run: echo "Successfully Deployed"
+            run: cat dragon.txt
 
            
