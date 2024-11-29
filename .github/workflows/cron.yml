@@ -1,0 +1,22 @@
+name: Integration Testing
+
+on: 
+    # workflow_dispatch:
+    schedule:
+      - cron: "*/5 * * * *"
+
+jobs:
+    build_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v4.2.2
+
+            - name: Install Cowsay Program
+              run: sudo apt-get install cowsay -y
+
+            - name: Execute Cowsay CMD
+              run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+
+            - name: Execute Cowsay CMD
+              run: cat dragon.txt
