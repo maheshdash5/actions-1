@@ -30,7 +30,6 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                 name: dragon-artifact
-                path: dragon.txt
 
             - name: Test if File Exists
               run: grep -i "dragon" dragon.txt
@@ -43,7 +42,6 @@ jobs:
             uses: actions/download-artifact@v4
             with:
               name: dragon-artifact
-              path: dragon.txt
 
           - name: Executing the script
             run: echo "Successfully Deployed"
