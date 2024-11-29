@@ -43,7 +43,7 @@ jobs:
             with:
               name: dragon-artifact
 
-          - name: Executing the script
+          - name: Read File
             run: cat dragon.txt
 
            
