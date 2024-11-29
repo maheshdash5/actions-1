@@ -20,17 +20,9 @@ jobs:
             - name: Checkout Repo
               uses: actions/checkout@v4.2.2
 
-            - name: Install Cowsay Program
-              run: sudo apt-get install cowsay -y
+            - name: Executing the script
+              run: |
+                 chmod +x ascii-script.sh
+                 ./ascii-script.sh
 
-            - name: Generate ASCII Artwork
-              run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
-            
-            - name: Test File Exists
-              run: grep -i "dragon" dragon.txt
-
-            - name: Read File
-              run: cat dragon.txt
-
-            - name: Checkout Repo Files
-              run: ls -ltra
+           
