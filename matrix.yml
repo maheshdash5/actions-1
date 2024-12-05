@@ -1,0 +1,18 @@
+name: Matrix Strategy
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        images: [hellow-world, alpine]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Echo Docker Details
+        run: docker info
+      
+      - name: Running Docker Image on ${{ matrix.os }}
+        run: ${{ matrix.images }}
