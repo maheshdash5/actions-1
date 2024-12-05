@@ -8,8 +8,8 @@ on:
       branches:
         - main
         - '!features/*'
-      branches-ignore:
-        - 'test/**'
+    #   branches-ignore:
+    #    - 'test/**'
     pull_request:
         types:
           - opened
